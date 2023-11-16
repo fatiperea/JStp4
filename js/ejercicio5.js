@@ -4,7 +4,7 @@ class Persona{
         this.nombre=nombre;
         this.edad=edad;
         this.#dni=dni;
-        this.sexo=['F','M'];
+        this.sexo=sexo;
         this.peso=peso;
         this.altura=altura;
         this.anioNacimiento=anioNacimiento;
@@ -14,14 +14,14 @@ class Persona{
     get verEdad(){return this.edad}
 
     get verDNI(){return this.#dni}
-/*
+
     get verSexo(){return this.sexo}
 
     get verPeso(){return this.peso}
 
     get verAlt(){return this.altura}
 
-    get verFecNac(){return this.anioNacimiento} */
+    get verAnioNac(){return this.anioNacimiento} 
 
     set darNombre(nombre){this.nombre=nombre;}
 
@@ -29,29 +29,44 @@ class Persona{
 
     set darDNI(dni){this.#dni=dni;}
 
-    /*set darSexo(sexo){this.sexo=sexo;}
+    set darSexo(sexo){this.sexo=sexo;}
 
     set darPeso(peso){this.peso=peso;}
 
     set darAlt(altura){this.altura=altura;}
 
-    set darAnioNac(anioNac){this.anioNacimiento=anioNac;}  */
+    set darAnioNac(anioNac){this.anioNacimiento=anioNac;}  
     mostrarGeneracion(anioNac){
+        if(anioNac>=1994 && anioNac<=2010) document.write(`${this.verNombre} pertenece a la generacion Z(Rasgo caracteristico: irreverencia)`);//``
+        if (anioNac>=1981 && anioNac<=1993) document.write(`${this.verNombre} pertenece a la generacion Y(Rasgo caracteristico: frustracion)`);     
+        if(anioNac>=1969 && anioNac<=1980) document.write(`${this.verNombre} pertenece a la generacion X(Rasgo caracteristico: obsesion por el exito)`);
+            
+        if (anioNac>=1949 && anioNac<=1968) document.write(`${this.verNombre} pertenece a la generacion Baby boom(Rasgo caracteristico: ambicion)`);
+            
+        if(anioNac>=1930 && anioNac<=1948) document.write(`${this.verNombre} pertenece a la generacion Silent(Rasgo caracteristico: austeridad)</br>`);
 
     }
 
     esMayor(){if(this.verEdad>=18) document.write(this.verNombre+" es mayor de edad</br>");}
 
     mostrarDatos(){
-        document.write("Nombre: "+this.verNombre+"</br>"+"DNI: "+this.verDNI+"</br>"+"Edad: "+this.verEdad);
+        document.write("Nombre: "+this.verNombre+"</br>"+"DNI: "+this.verDNI+"</br>"+"Edad: "+this.verEdad+"</br>");
+        document.write(`Sexo: ${this.sexo}</br>Peso: ${this.verPeso}</br>Altura: ${this.verAlt}</br>Año de nacimiento: ${this.verAnioNac}</br>`);
+
 
     }
 
-    generaDNI(){}
+    generaDNI(){
+        return Math.floor(Math.random() * 99999999 + 1);
+    }
 }
 
-const persona1= new Persona('Fatima Perea',37,32626283);
+const persona1= new Persona('Fatima Perea',37,32626283,'F',57,1.57,1986);
 
 console.log(persona1);
 
 persona1.mostrarDatos();
+
+persona1.esMayor();
+
+persona1.mostrarGeneracion(persona1.verAnioNac);
