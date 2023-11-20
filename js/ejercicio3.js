@@ -1,49 +1,48 @@
 class Rectangulo {
-  constructor(alto,ancho){
-    this.alto=alto;
-    this.ancho=ancho;
-}
-  
-/*get alto () {
+  constructor(alto, ancho) {
+    this.alto = alto;
+    this.ancho = ancho;
+  }
+
+  get verAlto() {
     return this.alto;
   }
-  get ancho() {
+  get verAncho() {
     return this.ancho;
   }
 
-  set alto1 (altura) {
-    if(altura>0)
-      this.alto1 = altura;
+  set cargaAlto(altura) {
+    if (isNaN(altura) || altura < 0) return alert("Ingresar numero mayor a cero");
+    else this.alto = altura;
   }
-  set ancho1(anchura) {
-    if(anchura>0)
-    this.ancho1 = anchura;
-  }*/
+  set cargaAncho(anchura) {
+    if (isNaN(anchura) || anchura < 0) return alert("Ingresar numero mayor a cero");
+    else this.ancho = anchura;
+  }
 
   perimetro() {
-    return 2 * this.alto + 2 * this.ancho;
+    return 2 * this.verAlto + 2 * this.verAncho;
   }
-  area () {
-    return this.alto * this.ancho;
+  area() {
+    return this.verAlto * this.verAncho;
   }
-};
+}
 
-const rectangulo1= new Rectangulo(4,3);
+const rectangulo1 = new Rectangulo(4, 3);
 
 console.log(rectangulo1);
 
-const alto = parseFloat(prompt("Establecer el alto del rectangulo:"));
-const ancho = parseFloat(prompt("Establecer el ancho del rectangulo:"));
+const alto = (prompt("Establecer el alto del rectangulo:"));
+const ancho = (prompt("Establecer el ancho del rectangulo:"));
 
-const rectangulo2=new Rectangulo(alto,ancho);
+const rectangulo2 = new Rectangulo(alto, ancho);
 
-if (isNaN(alto) && isNaN(ancho)) document.write("Valor invalido<br>");
-else {
-  document.write(
-    `Su rectangulo tiene: ${rectangulo2.alto} de alto y ${rectangulo2.ancho} de ancho<br>`
-  );
+console.log(rectangulo2);
 
-  document.write(`Su perímetro es: ${rectangulo2.perimetro()}<br>`);
+document.write(
+  `Su rectangulo tiene: ${rectangulo2.verAlto} de alto y ${rectangulo2.verAncho} de ancho<br>`
+);
 
-  document.write(`Su superficie es: ${rectangulo2.area()}`);
-}
+document.write(`Su perímetro es: ${rectangulo2.perimetro()}<br>`);
+
+document.write(`Su superficie es: ${rectangulo2.area()}`);
