@@ -12,12 +12,14 @@ class Rectangulo {
   }
 
   set cargaAlto(altura) {
-    if (isNaN(altura) || altura < 0) return alert("Ingresar numero mayor a cero");
-    else this.alto = altura;
+    if (isNaN(altura) || altura < 0)
+      return alert("Ingresar numero mayor a cero");
+    else return (this.alto = altura);
   }
   set cargaAncho(anchura) {
-    if (isNaN(anchura) || anchura < 0) return alert("Ingresar numero mayor a cero");
-    else this.ancho = anchura;
+    if (isNaN(anchura) || anchura < 0)
+      return alert("Ingresar numero mayor a cero");
+    else return (this.ancho = anchura);
   }
 
   perimetro() {
@@ -32,17 +34,21 @@ const rectangulo1 = new Rectangulo(4, 3);
 
 console.log(rectangulo1);
 
-const alto = (prompt("Establecer el alto del rectangulo:"));
-const ancho = (prompt("Establecer el ancho del rectangulo:"));
+const alto = parseFloat(prompt("Establecer el alto del rectangulo:"));
+const ancho = parseFloat(prompt("Establecer el ancho del rectangulo:"));
 
-const rectangulo2 = new Rectangulo(alto, ancho);
+if (isNaN(alto) || alto <= 0 || isNaN(ancho) || ancho <= 0)
+  alert("Ingresar numero mayor a cero");
+else {
+  const rectangulo2 = new Rectangulo(alto, ancho);
 
-console.log(rectangulo2);
+  console.log(rectangulo2);
 
-document.write(
-  `Su rectangulo tiene: ${rectangulo2.verAlto} de alto y ${rectangulo2.verAncho} de ancho<br>`
-);
+  document.write(
+    `Su rectangulo tiene: ${rectangulo2.verAlto} de alto y ${rectangulo2.verAncho} de ancho<br>`
+  );
 
 document.write(`Su perímetro es: ${rectangulo2.perimetro()}<br>`);
 
 document.write(`Su superficie es: ${rectangulo2.area()}`);
+  }
