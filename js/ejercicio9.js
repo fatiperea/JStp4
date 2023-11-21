@@ -15,7 +15,8 @@ class Animal {
     this.nombre = nombre;
   }
   set altaEdad(edad) {
-    this.edad = edad;
+    if(edad>0)
+        this.edad = edad;
   }
 
   emitirSonido(sonido) {
